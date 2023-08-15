@@ -29,6 +29,11 @@ public class Address implements Comparable<Address>{
 		return this.id.compareTo(o.id);
 				//return this.id - a.id;
 	}
+
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", addressId=" + addressId + ", addressName=" + addressName + "]";
+	}
 	
 
 }

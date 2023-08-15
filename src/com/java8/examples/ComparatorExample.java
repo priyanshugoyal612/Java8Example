@@ -21,14 +21,22 @@ public class ComparatorExample {
 
 		List<Employee> employees = Employee.getList();
 
+		employees.sort(Comparator.comparing(emp -> emp.getName()));
+		System.out.println("Emplooyee Sorted By Name " + employees);
+		employees.sort(Comparator.comparing(Employee::getId).reversed());// Method References
+		System.out.println("Emplooyee Sorted By Id in reverse order " + employees);
+		// chaining of comprator
+		employees.sort(Comparator.comparing(Employee::getCompanyName).thenComparing(Employee::getId));
+		System.out.println("chaining of comprator" + employees);
+
 		List<Employee> sortedEmployeeByCompanyName = employees.stream()
 				.sorted(Comparator.comparing(Employee::getCompanyName)).collect(Collectors.toList());
 		System.out.println(sortedEmployeeByCompanyName);
-		
+
 		System.out.println("Sorting the employee on the basis of name");
 
-		 Collections.sort(employees,name);
-		 System.out.println(employees);
+		Collections.sort(employees, name);
+		System.out.println(employees);
 
 	}
 
